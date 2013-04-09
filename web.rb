@@ -11,5 +11,6 @@ get '/headers' do
 end
 
 get '/' do
-  request.inspect
+  # request.inspect
+  request_headers.inspect
 end
