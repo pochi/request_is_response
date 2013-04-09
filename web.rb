@@ -6,6 +6,10 @@ helpers do
   end
 end
 
-get '/' do
+get '/headers' do
   request_headers.inspect
+end
+
+get '/' do
+  request.inspect
 end
