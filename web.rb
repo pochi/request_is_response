@@ -12,5 +12,5 @@ end
 
 get '/' do
   # request.inspect
-  request_headers.inspect
+  request_headers.merge(params).inspect
 end
