@@ -1,0 +1,74 @@
+%html
+  %head
+    %title request is response
+    %link{ :type => "text/css", :href => "bootstrap-3.1.1-dist/css/bootstrap.min.css ", :rel => "stylesheet" }
+    %script{ :type => "text/javascript", :src => "jquery-2.1.0.min.js" }
+    %script{ :type => "text/javascript", :src => "bootstrap-3.1.1-dist/js/bootstrap.min.js" }
+
+
+
+  %body
+    %h1 headers
+    %table{ :class => "table table-striped" }
+      %thread
+        %tr
+          %th header
+          %th value
+      %tbody
+        - @request_headers.each do |key, value|
+          %tr
+            %td= key
+            %td= value
+
+    %h1 Add headers
+    %form{:method => "POST", :action => "/headers"}
+      %table.expand_headers.table.table-striped
+        %thread
+          %tr
+            %th header
+            %th value
+        %tbody.add_column
+          %tr
+            %td
+              %input.header{ :type => "text", :name => "header" }
+            %td
+              %input.value{ :type => "text", :name => "header" }
+
+    %h5
+      %ul{ :style => "list-style:none" }
+        %li
+          %a.add_columns Add columns
+        %li
+          %a.send_sync Send sync
+        %li
+          %a.send_async Send async
+
+
+
+:javascript
+  $(function() {
+    var expand_headers = function() {
+      console.log("expand");
+      $("tbody.add_column").each(function(data) {
+        console.log(data);
+      });
+      return { "Authorization":"aaa" };
+    };
+
+    $(".add_columns").click(function() {
+      $("tbody.add_column").append("<tr><td><input class='header' name='header' type='text'></td><td><input class='value' name='header' type='text'></td></tr>");
+    });
+
+    $(".send_sync").click(function() {
+      $.ajax({
+        async: false,
+        headers: expand_headers(),
+        type: "GET",
+        url: "/",
+        dataType: "html",
+        success: function(data) {
+          $("html").html(data);
+        }
+      });
+    });
+  });
