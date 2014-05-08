@@ -19,3 +19,10 @@ get '/' do
   @request_headers = request_headers.merge(params)
   haml :index
 end
+
+post '/' do
+  # request.inspect
+  puts env.inspect
+  @request_headers = request_headers.merge(params)
+  haml :index
+end

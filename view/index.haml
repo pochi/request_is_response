@@ -39,9 +39,9 @@
         %li
           %a.add_columns Add columns
         %li
-          %a.send_sync Send sync
-
-
+          %a.send_get_sync Send get sync
+        %li
+          %a.send_post_sync Send post sync
 
 :javascript
   $(function() {
@@ -57,7 +57,7 @@
       $("tbody.add_column").append("<tr><td><input class='header' name='header' type='text'></td><td><input class='value' name='header' type='text'></td></tr>");
     });
 
-    $(".send_sync").click(function() {
+    $(".send_get_sync").click(function() {
       $.ajax({
         async: false,
         headers: expand_headers(),
@@ -69,4 +69,18 @@
         }
       });
     });
+
+    $(".send_post_sync").click(function() {
+      $.ajax({
+        async: false,
+        headers: expand_headers(),
+        type: "GET",
+        url: "/",
+        dataType: "html",
+        success: function(data) {
+          $("html").html(data);
+        }
+      });
+    });
+
   });
