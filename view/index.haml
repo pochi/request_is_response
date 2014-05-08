@@ -58,7 +58,6 @@
     });
 
     $(".send_get_sync").click(function() {
-      alert("get");
       $.ajax({
         async: false,
         headers: expand_headers(),
@@ -66,6 +65,8 @@
         url: "/",
         dataType: "html",
         success: function(data) {
+          alert("get_response");
+          console.log(data);
           $("html").html(data);
         }
       });
