@@ -60,7 +60,6 @@
     $(".send_get_sync").click(function() {
       $.ajax({
         async: false,
-        headers: expand_headers(),
         type: "GET",
         url: "/",
         dataType: "html",
@@ -68,6 +67,10 @@
           alert("get_response");
           console.log(data);
           $("html").empty().html(data);
+        },
+        beforeSend: function(xhr) {
+          var credentials = $.base64.encode("request:response");
+          xhr.setRequestHeader("Authorization", "Basic " + credentials);
         }
       });
     });
