@@ -4,7 +4,7 @@ set :public_dir, File.dirname(__FILE__) + "/public"
 set :views, File.dirname(__FILE__) + "/view"
 
 use Rack::Auth::Basic do |username, password|
-  username == "request" && passsword == "response"
+  username == "request" && password == "response"
 end
 
 
