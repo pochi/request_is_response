@@ -63,16 +63,13 @@
       $.ajax({
         async: false,
         type: "GET",
+        headers: expand_headers(),
         url: "/",
         dataType: "html",
         success: function(data) {
           alert("get_response");
           console.log(data);
           $("html").empty().html(data);
-        },
-        beforeSend: function(xhr) {
-          var credentials = $.base64.encode("request:response");
-          xhr.setRequestHeader("Authorization", "Basic " + credentials);
         }
       });
     });
