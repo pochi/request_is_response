@@ -3,6 +3,10 @@ require 'sinatra'
 set :public_dir, File.dirname(__FILE__) + "/public"
 set :views, File.dirname(__FILE__) + "/view"
 
+use Rack::Auth::Basic do |username, password|
+  username == "request" && passsword == "response"
+end
+
 helpers do
   def request_headers
     env.inject({}){|acc, (k,v)| acc[$1.downcase] = v if k =~ /^http_(.*)/i; acc}
