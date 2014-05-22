@@ -34,15 +34,12 @@ end
 
 get '/' do
   # request.inspect
-  puts "------------"
-  authenticate!
   @request_headers = request_headers.merge(params)
   haml :index
 end
 
-get '/everyone' do
-  # request.inspect
-  puts "------------"
+get '/authenticate' do
+  authenticate!
   @request_headers = request_headers.merge(params)
   haml :index
 end
