@@ -20,7 +20,7 @@ end
 
 get '/' do
   # request.inspect
-  puts env.inspect
+  puts "------------"
   @request_headers = request_headers.merge(params)
   haml :index
 end
