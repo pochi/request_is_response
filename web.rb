@@ -3,9 +3,11 @@ require 'sinatra'
 set :public_dir, File.dirname(__FILE__) + "/public"
 set :views, File.dirname(__FILE__) + "/view"
 
+=begin
 use Rack::Auth::Basic do |username, password|
   username == "request" && passsword == "response"
 end
+=end
 
 helpers do
   def request_headers
