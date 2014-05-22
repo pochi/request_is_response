@@ -40,6 +40,14 @@ get '/' do
   haml :index
 end
 
+get '/everyone' do
+  # request.inspect
+  puts "------------"
+  @request_headers = request_headers.merge(params)
+  haml :index
+end
+
+
 post '/' do
   # request.inspect
   puts env.inspect
