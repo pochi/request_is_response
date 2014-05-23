@@ -4,6 +4,7 @@ set :public_dir, File.dirname(__FILE__) + "/public"
 set :views, File.dirname(__FILE__) + "/view"
 
 =begin
+if you want to auth all pages, this part set available.
 use Rack::Auth::Basic do |username, password|
   username == "request" && password == "response"
 end
@@ -33,7 +34,6 @@ get '/headers' do
 end
 
 get '/' do
-  # request.inspect
   @request_headers = request_headers.merge(params)
   haml :index
 end
@@ -51,8 +51,6 @@ get '/authenticate/sub' do
 end
 
 post '/' do
-  # request.inspect
-  puts env.inspect
   @request_headers = request_headers.merge(params)
   haml :index
 end
