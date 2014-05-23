@@ -44,6 +44,11 @@ get '/authenticate' do
   haml :index
 end
 
+get '/authenticate/sub' do
+  authenticate!
+  @request_headers = request_headers.merge(params)
+  haml :index
+end
 
 post '/' do
   # request.inspect
