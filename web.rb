@@ -55,6 +55,12 @@ post '/too_long_request' do
   haml :index
 end
 
+get '/too_long_request' do
+  sleep 120
+  haml :index
+end
+
+
 post '/' do
   @request_headers = request_headers.merge(params)
   haml :index
