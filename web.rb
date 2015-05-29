@@ -50,6 +50,11 @@ get '/authenticate/sub' do
   haml :index
 end
 
+post '/too_long_request' do
+  sleep 120
+  haml :index
+end
+
 post '/' do
   @request_headers = request_headers.merge(params)
   haml :index
